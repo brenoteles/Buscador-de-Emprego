@@ -19,10 +19,13 @@ public class InfoJobs {
 	//Usa os metodos disponíveis para abrir novas páginas e procurar vagas
 	public static List<HashMap<String,String>> buscar_emprego(String link, Integer qtd_paginas) {
 		//Loop para que seja possível carregar mais de uma página de busca de empregos
-			for(int pagina = 1; pagina <= qtd_paginas ; pagina++ ) {
-				ir_para(link, pagina);
-				procurar_vagas();			
-			}
+
+		lista_vagas.clear(); //Dando fim no lixo
+
+		for(int pagina = 1; pagina <= qtd_paginas ; pagina++ ) {
+			ir_para(link, pagina);
+			procurar_vagas();			
+		}
 			
 		return lista_vagas;
 	}
@@ -41,7 +44,6 @@ public class InfoJobs {
 	
 	//Busca vagas por toda a página e adiciona na lista
 	private static void procurar_vagas() {
-		lista_vagas.clear();
 		//Lista de WebElements que são vagas
 		List<WebElement> vagas = new ArrayList<WebElement> ();
 		vagas.clear();
